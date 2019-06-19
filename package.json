@@ -1,0 +1,51 @@
+{
+  "name": "gulp-etl-target-csv",
+  "version": "1.0.3",
+  "repository": "https://github.com/gulpetl/gulp-etl-target-csv",
+  "description": "Convert CSV files to JSON compatible with gulp-etl",
+  "main": "dist/js/plugin.js",
+  "typings": "dist/types/plugin.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc --module commonjs --outDir dist/lib",
+    "test": "jest"
+  },
+  "author": "peterl@sbcotton.com",
+  "license": "MIT",
+  "keywords": [
+    "gulpplugin",
+    "csv",
+    "gulp-etl"
+  ],
+  "homepage": "https://gulpetl.com",
+  "dependencies": {
+    "csv-stringify": "^5.3.0",
+    "from2": "^2.3.0",
+    "gulp-error-handle": "^1.0.1",
+    "loglevel": "^1.6.1",
+    "pkginfo": "^0.4.1",
+    "plugin-error": "^1.0.1",
+    "split2": "^3.1.1",
+    "through2": "^3.0.1",
+    "vinyl": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/del": "^4.0.0",
+    "@types/gulp-rename": "0.0.33",
+    "@types/jest": "^23.3.14",
+    "@types/loglevel": "^1.5.4",
+    "@types/node": "^10.14.6",
+    "@types/vinyl": "^2.0.3",
+    "@types/vinyl-paths": "0.0.31",
+    "gulp": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "jest": "^24.7.1",
+    "jest-spec-reporter": "^1.0.5",
+    "stream-transform": "^2.0.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.4.5"
+  }
+}
