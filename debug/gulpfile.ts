@@ -1,9 +1,9 @@
 let gulp = require('gulp')
-import {targetCsv} from '../src/plugin'
+import {targetText} from '../src/plugin'
 
 import * as loglevel from 'loglevel'
 const log = loglevel.getLogger('gulpfile')
-log.setLevel((process.env.DEBUG_LEVEL || 'warn') as log.LogLevelDesc)
+log.setLevel((process.env.DEBUG_LEVEL || 'warn') as loglevel.LogLevelDesc)
 // if needed, you can control the plugin's logging level separately from 'gulpfile' logging above
 // const pluginLog = loglevel.getLogger(PLUGIN_NAME)
 // pluginLog.setLevel('debug')
@@ -23,6 +23,25 @@ function switchToBuffer(callback: any) {
 
   callback();
 }
+// works
+// let template = `{
+//   {{foreach(options.record)}}
+//     "{{@key}}":"{{@this}}"
+//     {{if(Object.keys(options.record)[Object.keys(options.record).length - 1] !== @key)}},{{/if}}
+//   {{/foreach}}
+// }`;
+
+// let template = `{{{foreach(options.record)}}"{{@key}}":"{{@this}}",{{/foreach}}
+// "entityAspect": {"entityState": "AddedOrModified","entityTypeName": "{{stream}}:#GinProServer2"}}`;
+
+// doesn't work. on foreach, at all?
+// let template = `{{{foreach(options.record)}}
+// {{@../../this.values.length}}
+// {{/foreach}}}`;
+
+// let template = `{ carModel:"{{carModel}}", price:{{price}}, color:"{{color}}"}`;
+// let template = `{ carModel:"{{record['carModel']}}", price:{{record['price']}}, color:"{{record['color']}}"}`; //works
+let template = `{ model:"{{record.carModel}}", color:"{{record['color']}}", prc:{{record.price}}}`; //works
 
 function runtargetCsv(callback: any) {
   log.info('gulp task starting for ' + PLUGIN_NAME)
@@ -34,10 +53,11 @@ function runtargetCsv(callback: any) {
     }))
     .on('data', function (file:Vinyl) {
       log.info('Starting processing on ' + file.basename)
-    })    
-    .pipe(targetCsv({header:true, quoted_string:true}))
+    })   
+    .pipe(targetText({template:template}))
+    // rename back to ndjson, since that's what we are creating here
     .pipe(rename({
-      extname: ".csv",
+      extname: ".ndjson",
     }))      
     .pipe(gulp.dest('../testdata/processed'))
     .on('data', function (file:Vinyl) {

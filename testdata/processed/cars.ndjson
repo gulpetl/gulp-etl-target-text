@@ -1,0 +1,4 @@
+{ model:"Audi", color:"blue", prc:10000}
+{ model:"BMW", color:"red", prc:15000}
+{ model:"Mercedes", color:"yellow", prc:20000}
+{ model:"Porsche", color:"green", prc:30000}

@@ -1,0 +1,4 @@
+{ model:"undefined", color:"blue", prc:10000}
+{ model:"undefined", color:"red", prc:15000}
+{ model:"undefined", color:"yellow", prc:20000}
+{ model:"undefined", color:"green", prc:30000}
