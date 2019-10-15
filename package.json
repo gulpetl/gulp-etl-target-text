@@ -1,6 +1,6 @@
 {
   "name": "gulp-etl-target-text",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "repository": "https://github.com/gulpetl/gulp-etl-target-text",
   "description": "Use templates to create any kind of text (HTML, mail merge, tweets, JSON...) from Message Streams",
   "main": "dist/js/plugin.js",
