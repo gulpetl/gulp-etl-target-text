@@ -93,6 +93,7 @@ function targetText(configObj) {
                         returnErr = new PluginError(PLUGIN_NAME, err);
                     }
                 }
+                file.contents = Buffer.from(resultArray.join('\n'));
                 cb(returnErr, file);
                 // stringify(resultArray, configObj, function(err:any, data:string){
                 //   // this callback function runs when the stringify finishes its work, returning an array of CSV lines
